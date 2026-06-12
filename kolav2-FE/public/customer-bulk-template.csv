@@ -1,0 +1,2 @@
+customer_name,customer_address,customer_phone,customer_type,customer_business_type,country,location,city,region
+Acme Corporation,"123 Business Park, Suite 100",+2349084726374,business,"[""supplier"",""wholesaler""]",USA,Downtown,New York,NY

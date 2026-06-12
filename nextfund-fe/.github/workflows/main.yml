@@ -1,0 +1,88 @@
+name: Direct Docker Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create environment file
+        run: |
+          cat << EOF > .env
+          NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          NEXT_PUBLIC_TIER=${{ secrets.NEXT_PUBLIC_TIER }}
+          PORT=3000
+          EOF
+          chmod 644 .env
+
+      # 🧱 MAIN BRANCH: Full build + deploy
+      - name: Set up Docker Buildx
+        if: github.ref == 'refs/heads/main'
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        if: github.ref == 'refs/heads/main'
+        run: |
+          IMAGE_TAG="${GITHUB_SHA:0:7}-$(date +%s)"
+          docker build -t nexfund:$IMAGE_TAG .
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+
+      - name: Save image to tar.gz
+        if: github.ref == 'refs/heads/main'
+        run: |
+          docker save nexfund:${{ env.IMAGE_TAG }} | gzip > nexfund_image.tar.gz
+
+      - name: Upload Docker image and .env to server
+        if: github.ref == 'refs/heads/main'
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.REMOTE_SSH_KEY }}
+          source: "nexfund_image.tar.gz,.env"
+          target: "~/deploy/"
+
+      - name: Deploy on server
+        if: github.ref == 'refs/heads/main'
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.REMOTE_SSH_KEY }}
+          script: |
+            cd ~/deploy
+
+            IMAGE_ID=$(gunzip -c nexfund_image.tar.gz | docker load | grep "Loaded image" | awk '{print $NF}')
+            docker tag $IMAGE_ID nexfund:${{ env.IMAGE_TAG }}
+
+            docker stop nexfund || true
+            docker rm nexfund || true
+            docker rmi nexfund || true
+
+            docker run -d \
+              --name nexfund \
+              -p 3000:3000 \
+              nexfund:${{ env.IMAGE_TAG }}
+
+            docker image prune -f
+
+      # 🧪 DEV BRANCH: Simple echo only
+      - name: Dev branch placeholder
+        if: github.ref == 'refs/heads/dev'
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.REMOTE_SSH_KEY }}
+          script: |
+            run: echo "Hello from dev branch 👋"
+            ./deploy_dev_fe.sh

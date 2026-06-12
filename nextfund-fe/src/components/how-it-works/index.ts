@@ -1,0 +1,9 @@
+export { HeroSection } from "./hero-section";
+export { InvestorsSection } from "./investor-section";
+export { BusinessesSection } from "./business-section";
+export { SecuritySection } from "./security-section";
+export { WhyChooseSection } from "./why-choose-section";
+export { CTASection } from "./cta-section";
+export { StepCard } from "./step-card";
+export { FeatureList } from "./feature-list";
+export { GrowthChart } from "./growth-chart";

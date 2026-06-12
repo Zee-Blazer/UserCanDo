@@ -1,0 +1,2 @@
+customer_entity_type,customer_phone_number,sale_date,sales_agent_phone_number,sale_type,due_date,payment_mode,delivery_location,discount_type,discount_value,products
+external,+2348088351872,2025-08-24,+2348178657178,transfer,2025-08-26,credit,New York,percentage,10,"[{""product_sku"": ""JVS9"", ""item_type"": ""physical"", ""quantity"": 2, ""unit_price"": 50.0, ""total_price"": 100.0}]"

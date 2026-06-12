@@ -1,0 +1,26 @@
+name: Deploy Kola-Api
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: SSH into main....
+      if: github.ref == 'refs/heads/main'
+      uses: appleboy/ssh-action@master
+      with:
+        host: 104.248.248.179
+        username: root
+        key: ${{ secrets.UCD_SSH_KEY }}
+        port: 22
+        script: |
+          ./kola_ui.sh
+          echo "🚀 Deployment to DEV server successfully done!"

@@ -1,0 +1,51 @@
+import React from "react";
+import addSalesSuccess from "@/assets/images/add_sales_success.svg";
+import { Button, Typography } from "@material-tailwind/react";
+import Image from "next/image";
+import { useAuth } from "@/context/authContext";
+
+const ConfirmationSlide = () => {
+  const { setActiveSlideIndex, resetSalesRequestState } = useAuth();
+
+  return (
+    <div>
+      <p className="text-xl font-medium mb-6">Request Confirmation</p>
+      <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <Image
+            src={addSalesSuccess}
+            alt="Sale Success"
+            width={150}
+            height={150}
+          />
+          <p className="text-2xl font-bold mt-4">
+            Request has been recorded successfully
+          </p>
+
+          <Button
+            className="bg-blue_pry w-full normal-case mt-4"
+            onClick={() => {
+              resetSalesRequestState(); // Reset state before starting new request
+              setActiveSlideIndex(1);
+            }}
+          >
+            <Typography className="text-white font-normal">
+              Place New Order
+            </Typography>
+          </Button>
+          <Button
+            onClick={() => {
+              resetSalesRequestState(); // Reset state when done
+              setActiveSlideIndex(0);
+            }}
+            className="bg-[#E0F0FF] w-full normal-case mt-2"
+          >
+            <Typography className="text-blue_pry font-normal">Done</Typography>
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ConfirmationSlide;

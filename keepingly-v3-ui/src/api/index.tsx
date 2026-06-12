@@ -1,0 +1,44 @@
+import axios from "axios";
+export const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+
+export const api = axios.create({
+	baseURL,
+	headers: {
+		"Content-Type": "application/json",
+	},
+});
+
+export const api2 = axios.create({
+	baseURL,
+	headers: {
+		"Content-Type": "multipart/form-data",
+	},
+});
+
+api.interceptors.request.use(
+	async (config) => {
+		const token = localStorage.getItem("token");
+		if (token) {
+			config.headers.Authorization = `Bearer ${token}`;
+		}
+		return config;
+	},
+	(error) => {
+		console.error("Request error:", error);
+		return Promise.reject(error);
+	}
+);
+
+api2.interceptors.request.use(
+	async (config) => {
+		const token = localStorage.getItem("token");
+		if (token) {
+			config.headers.Authorization = `Bearer ${token}`;
+		}
+		return config;
+	},
+	(error) => {
+		console.error("Request error:", error);
+		return Promise.reject(error);
+	}
+);

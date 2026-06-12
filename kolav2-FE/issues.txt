@@ -1,0 +1,17 @@
+1. I need data for Business category, Country, Region and city when creating Business
+2. I uploaded image when creating profile, the image is not been returned in user's profile. Same as location and country - api/v1/view_profile
+3. Role is not being returned in user's profile api/v1/view_profile
+4. Response inconsistency breaking UI {"success": true, "message": "Profile updated successfully"}. Note, UI is expecting is_success - /api/v1/update_profile
+
+--- NEW ISSUES 
+1. Response inconsistency breaking UI {"success": true, "message": "Profile updated successfully"}. Note, UI is expecting is_success - /api/v1/update_profile
+2. No endpoint to change password when a user is already logged in. 
+3. Update profile does not accept image payload item to change user image.
+4. Refresh token endpoint does not work
+5. Endpoint that get all businesses lacking some info, Total sales, total order value, Last updated and maybe created at. 
+6. What is the correct image url? This is what I get /1023COO-DIN-Skillet-Chicken-with-Grapes-and-Shallots-cold-weather-meals-34f0b5364e814296af7bb0.
+7. Could not create new business  "error": "Error occurred while trying to create business",
+
+
+--DESIGN Questions
+1.. What's the difference between business type and Primary category. And how do I get the list?

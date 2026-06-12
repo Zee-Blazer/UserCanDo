@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* Neue Montreal Font Family */
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/Neue Montreal/NeueMontreal-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/Neue Montreal/NeueMontreal-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/Neue Montreal/NeueMontreal-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/Neue Montreal/NeueMontreal-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/Neue Montreal/NeueMontreal-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/Neue Montreal/NeueMontreal-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/Neue Montreal/NeueMontreal-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/Neue Montreal/NeueMontreal-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+:root {
+  --font-neue-montreal: 'Neue Montreal', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Base font application */
+body {
+  font-family: var(--font-neue-montreal);
+}
+
+/* Utility classes for different font weights */
+.font-neue-light {
+  font-family: var(--font-neue-montreal);
+  font-weight: 300;
+}
+
+.font-neue-regular {
+  font-family: var(--font-neue-montreal);
+  font-weight: 400;
+}
+
+.font-neue-medium {
+  font-family: var(--font-neue-montreal);
+  font-weight: 500;
+}
+
+.font-neue-bold {
+  font-family: var(--font-neue-montreal);
+  font-weight: 700;
+}
+
+/* Italic variants */
+.font-neue-light-italic {
+  font-family: var(--font-neue-montreal);
+  font-weight: 300;
+  font-style: italic;
+}
+
+.font-neue-regular-italic {
+  font-family: var(--font-neue-montreal);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.font-neue-medium-italic {
+  font-family: var(--font-neue-montreal);
+  font-weight: 500;
+  font-style: italic;
+}
+
+.font-neue-bold-italic {
+  font-family: var(--font-neue-montreal);
+  font-weight: 700;
+  font-style: italic;
+}

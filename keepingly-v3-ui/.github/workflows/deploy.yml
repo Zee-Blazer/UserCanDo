@@ -1,0 +1,37 @@
+name: Deploy Frotend
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Setup SSH Agent
+      uses: webfactory/ssh-agent@v0.5.2
+      with:
+        ssh-private-key: ${{ secrets.KEEPLING_SSH_KEY }}
+
+    - name: Add SSH key to known hosts
+      run: |
+        ssh-keyscan -H 20.83.172.0 >> ~/.ssh/known_hosts
+
+    - name: Check Branch and Deploy
+      run: |
+        if [ "${GITHUB_REF}" = "refs/heads/main" ]; then
+          echo "Deploying frotend for main branch"
+          ssh azureuser@20.83.172.0 '/home/azureuser/deployv3ui.sh'
+        elif [ "${GITHUB_REF}" = "refs/heads/dev" ]; then
+          echo "Deploying frotend for dev branch"
+          ssh azureuser@20.83.172.0 '/home/azureuser/deployv3ui.sh'
+        else
+          echo "Skipping deployment for other branches"
+        fi
+        
+        

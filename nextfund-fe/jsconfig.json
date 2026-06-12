@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/types/*": ["./src/types/*"],
+      "@/constants/*": ["./src/constants/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/lib/*": ["./src/lib/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", ".next", "dist", "build"]
+} 

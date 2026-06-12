@@ -1,0 +1,100 @@
+export const ROUTES = {
+  // General Routes
+  test: "#",
+  home: "/",
+  createAccount: "/create-account",
+  createBusiness: "/create-account/create-business",
+  login: "/login",
+  resetPassword: "/reset-passcode",
+
+  // Vendor Routes
+  dashboard: "/dashboard",
+  businesses: "/dashboard/businesses",
+  overview: "/dashboard/overview",
+  saleAgent: "/dashboard/sale-agents",
+  sales: "/dashboard/sales",
+  salesInvoice: "/dashboard/sales/invoice",
+  salesBulkUpload: "/dashboard/sales/bulk-upload",
+  salesLog: "/dashboard/sales/import-logs",
+  orders: "/dashboard/orders",
+  orderInvoice: "/dashboard/orders/invoice",
+  placeOrder: "/dashboard/orders/place-order",
+  orderStatus: "/dashboard/orders/status",
+  suppliers: "/dashboard/suppliers",
+  purchaseOrder: "/dashboard/purchase-order",
+  createPurchaseOrder: "/dashboard/purchase-order/place-order",
+  agents: "/dashboard/agents",
+  customers: "/dashboard/customers",
+  creditReport: "/dashboard/credit-report",
+  creditRequests: "/dashboard/credit-requests",
+  newCreditRequestOptions: "/dashboard/credit-requests/new-credit-request",
+  financialInformation: "/dashboard/credit-requests/financial-information",
+  orderType: "/dashboard/credit-requests/order-type",
+  uploadInvoice: "/dashboard/credit-requests/upload-invoice",
+  inventory: "/dashboard/inventory",
+  inventoryBulkUpload: "/dashboard/inventory/bulk-upload",
+  inventoryLogs: "/dashboard/inventory/import-logs",
+  agentRequest: "/dashboard/agent-requests",
+  agentRequestInvoice: "/dashboard/agent-requests/invoice",
+  salesPos: "/dashboard/sales-pos",
+  team: "/dashboard/team",
+  notifications: "/dashboard/notifications",
+  settings: "/dashboard/settings",
+  credit: "/dashboard/credit",
+  creditInvoice: "/dashboard/credit/invoice",
+  staff: "/dashboard/staff",
+
+  help: "https://app.kola.market/build/help-center",
+
+  // Shopper Routes
+  shopperHome: "/",
+  shopperCart: "/cart",
+  shopperCredit: "/credit",
+  shopperOrders: "/orders",
+  shopperProfile: "/profile",
+  shopperFavorites: "/favorites",
+
+  // Shopper Company Profile Routes
+  shopperCompanyProfile: "/profile/company",
+  shopperCustomers: "/profile/customers",
+  shopperAddCustomer: "/profile/customers/add-customer",
+  shopperStock: "/profile/stock",
+  shopperAgents: "/profile/agents",
+  shopperAddSale: "/profile/add-sale",
+  shopperAddBusiness: "/profile/business",
+
+  // Shopper Personal Profile Routes
+  shopperProfileEdit: "/profile/edit",
+  profileAddress: "/profile/address",
+  resetShopperPin: "/profile/reset-pin",
+  shopperNotification: "/profile/notification",
+  shopperAccountActivity: "/profile/account-activity",
+  shopperSettings: "/profile/settings",
+
+  allCategories: "/all-categories",
+  allVendors: "/all-vendors",
+  allDeals: "/all-deals",
+
+  // Agent routes
+  agentHome: "/agent",
+  agentOrders: "/agent/orders",
+  agentSales: "/agent/sales",
+  request: "/agent/request",
+  agentProfile: "/agent/profile",
+  agentProfileEdit: "/agent/profile/edit",
+  agentBoard: "/agent/leaderboard",
+
+  // Agent Company Profile Routes
+  agentCompanyProfile: "/agent/profile/company",
+  agentCustomers: "/agent/profile/customers",
+  agentAddCustomer: "/agent/profile/customers/add-customer",
+  agentStock: "/agent/profile/stock",
+  agentAddSale: "/agent/profile/add-sale",
+
+  // Agent Personal Profile Routes
+  agentProfileAddress: "/agent/profile/address",
+  agentResetPin: "/agent/profile/reset-pin",
+  agentNotification: "/agent/profile/notifications",
+  agentAccountActivity: "/agent/profile/account-activity",
+  agentSettings: "/agent/profile/settings",
+};
